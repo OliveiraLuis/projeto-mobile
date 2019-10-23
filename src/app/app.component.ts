@@ -33,6 +33,11 @@ export class AppComponent {
         title: "Home",
         url: "home",
         icon: 'home'
+      },
+      {
+        title: "Buscar",
+        url: "buscar",
+        icon: 'play-circle'
       }
     ];
   }
