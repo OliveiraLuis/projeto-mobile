@@ -11,7 +11,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
   navigate: any;
-  abacaxi: String = 'abacaxi';
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -34,6 +33,11 @@ export class AppComponent {
         title: "Home",
         url: "home",
         icon: 'home'
+      },
+      {
+        title: "Buscar",
+        url: "buscar",
+        icon: 'play-circle'
       }
     ];
   }
