@@ -20,7 +20,9 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.validations_form = this.formBuilder.group({
+      
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
@@ -32,7 +34,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  validation_message = {
+  validation_messages = {
     'email':[
       {type: 'required', message: 'Email é um campo obrigatório.'},
       {type: 'pattern', message: 'Porfavor insira um e-mail válido.'}
@@ -43,18 +45,18 @@ export class LoginPage implements OnInit {
     ] 
   };
 
-  loginUsuario(value){
+  loginUsuario(value) {
     this.authService.loginUsuario(value)
-    .then(res=>{
-      console.log(res);
-      this.errorMessage="";
-      this.navCtrl.navigateForward('/home');
-    }, err=>{
-      this.errorMessage = err.message;
-    })
+      .then( res => {
+        console.log(res);
+        this.errorMessage="";
+        this.navCtrl.navigateForward('/home');
+      }, err => {
+        this.errorMessage = err.message;
+      })
   }
 
-  goToRegistroPage(){
+  goToRegistroPage() {
     this.navCtrl.navigateForward('/register');
   }
 
