@@ -9,10 +9,12 @@ export const environment = {
     authDomain: "projetocinema-a7afe.firebaseapp.com",
     databaseURL: "https://projetocinema-a7afe.firebaseio.com",
     projectId: "projetocinema-a7afe",
-    storageBucket: "projetocinema-a7afe.appspot.com",
+    storageBucket: "gs://projetocinema-a7afe.appspot.com/",
     messagingSenderId: "665969608410",
-    appId: "1:665969608410:web:2f17792a98c4c8960387e3"
+    appId: "1:665969608410:web:2f17792a98c4c8960387e3",
   }
+
+  
 };
 
 /*
