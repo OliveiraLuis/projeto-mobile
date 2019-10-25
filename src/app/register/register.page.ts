@@ -15,13 +15,13 @@ export class RegisterPage implements OnInit {
   successMessage: string = '';
 
   validation_messages = {
-    'email':[
-    {type : 'required', message: 'Email é um campo obrigatório'},
-    {type : 'pattern', message: 'Insira um Email válido'}
+    'email': [
+      { type: 'required', message: 'Email é um campo obrigatório' },
+      { type: 'pattern', message: 'Insira um Email válido' }
     ],
-    'password':[
-      {type:'required', message:'Senha é um campo obrigatório'},
-      {type:'minlength', message:'Senha deve ter no mínimo 8 caracteres'}
+    'password': [
+      { type: 'required', message: 'Senha é um campo obrigatório' },
+      { type: 'minlength', message: 'Senha deve ter no mínimo 8 caracteres' }
     ]
   };
 
@@ -52,20 +52,20 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  tryRegister(value){
+  tryRegister(value) {
     this.authServise.registroUsuario(value)
-    .then(res=>{
-      console.log(res);
-      this.errorMessage="";
-      this.successMessage="Sua conta foi criada com sucesso, porfavor efetue login";
-    }, err=>{
-      console.log(err);
-      this.errorMessage=err.message;
-      this.successMessage="";
-    })
+      .then(res => {
+        console.log(res);
+        this.errorMessage = "";
+        this.successMessage = "Sua conta foi criada com sucesso, porfavor efetue login";
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+        this.successMessage = "";
+      })
   }
 
-  goLoginPage(){
+  goLoginPage() {
     this.navCtrl.navigateBack('');
   }
 }
