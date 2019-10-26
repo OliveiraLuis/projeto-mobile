@@ -30,9 +30,14 @@ export class AppComponent {
   sideMenu() {
     this.navigate = [
       {
-        title: "Home",
-        url: "home",
-        icon: 'home'
+        title: "Perfil",
+        url: "perfil",
+        icon: 'person'
+      },
+      {
+        title: "Playlist",
+        url: "playlist",
+        icon: 'play'
       },
       {
         title: "Buscar",
