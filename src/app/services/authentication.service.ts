@@ -42,7 +42,7 @@ export class AuthenticationService {
     })
   }
 
-  detalhesUsuario(){
-    return firebase.auth().currentUser;
+  async detalhesUsuario(){
+    return await firebase.auth().currentUser;
   }
 }

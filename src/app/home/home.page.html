@@ -1,15 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start" color="primary">
+    <ion-buttons slot="start" color="primary" [hidden]="!isLogged">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <img src="assets/icon/favicon.ico" width="32px" style="float: left">
     <ion-title>
       SpotiiFree - Home
     </ion-title>
-    <ion-button slot="end" (click)="gotoLogin()">
-      <ion-icon name="person"></ion-icon>
+
+    <ion-button [hidden]="!isLogged" slot="end" (click)="gotoLogoff()">
+      <ion-icon name="log-out"></ion-icon>
     </ion-button>
+
+    <ion-button [hidden]="isLogged" slot="end" (click)="gotoLogin()">
+      <ion-icon name="log-in"></ion-icon>
+    </ion-button>
+
   </ion-toolbar>
 </ion-header>
 
