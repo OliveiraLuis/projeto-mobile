@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-buscar',
@@ -8,18 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class BuscarPage implements OnInit {
 
   musicasEncontradas: any;
-  constructor() { }
+  search: any;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
 
-    this.musicasEncontradas = [
-      {
-        name: "Musicona",
-        author: "Dupla que canta muito",
-        thumbnail: "../assets/icon/favicon.png",
-        description: "Uma música muito boa. Fala sobre coisas que ninguém quer ouvir"
-      }
-    ]
+    this.musicasEncontradas = []
   }
 
+  buscar() {
+    this.http.get(`https://cors-anywhere.herokuapp.com/https://music-streaming-thing.herokuapp.com/audio?query=${encodeURI(this.search)}`)
+      .subscribe( data => {
+        this.musicasEncontradas = data[0]
+        console.log(this.musicasEncontradas)
+      })
+  }
 }

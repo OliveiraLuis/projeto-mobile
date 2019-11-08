@@ -9,16 +9,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar showCancelButton="focus" animated="true" cancelButtonText="Custom Cancel"></ion-searchbar>
+  <ion-searchbar (click)="buscar()" [(ngModel)]="search" showCancelButton="focus" animated="true" cancelButtonText="Custom Cancel"></ion-searchbar>
   <ion-list>
     <ion-item-sliding>
       <ion-item button *ngFor="let musica of musicasEncontradas">
         <ion-avatar slot="start">
-          <img src="{{musica.thumbnail}}">
+          <img src="{{musica.artwork_url}}">
         </ion-avatar>
         <ion-label>
-          <h2>{{musica.name}}</h2>
-          <h3>{{musica.author}}</h3>
+          <h2>{{musica.title}}</h2>
+          <h3>{{musica.album}}</h3>
           <p>{{musica.description}}</p>
         </ion-label>
       </ion-item>
@@ -26,5 +26,9 @@
         <ion-item-option (click)="unread(item)">Unread</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    <audio controls>
+      <source src="https://music-streaming-thing.herokuapp.com/stream/eyJwcm92aWRlcl9kYXRhIjoiSHJNRExNbXB4OG8iLCJwcm92aWRlcl9pZCI6IjIifQ==">
+      Your browser does not support the audio tag.
+    </audio> 
   </ion-list>
 </ion-content>
