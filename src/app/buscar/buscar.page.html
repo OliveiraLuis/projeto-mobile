@@ -21,14 +21,13 @@
           <h3>{{musica.album}}</h3>
           <p>{{musica.description}}</p>
         </ion-label>
+        <audio controls>
+          <source src="https://music-streaming-thing.herokuapp.com/stream/{{musica.data}}">
+        </audio>
       </ion-item>
       <ion-item-options side="end">
         <ion-item-option (click)="unread(item)">Unread</ion-item-option>
       </ion-item-options>
-    </ion-item-sliding>
-    <audio controls>
-      <source src="https://music-streaming-thing.herokuapp.com/stream/eyJwcm92aWRlcl9kYXRhIjoiSHJNRExNbXB4OG8iLCJwcm92aWRlcl9pZCI6IjIifQ==">
-      Your browser does not support the audio tag.
-    </audio> 
+    </ion-item-sliding> 
   </ion-list>
 </ion-content>

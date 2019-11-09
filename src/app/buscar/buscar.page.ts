@@ -8,8 +8,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class BuscarPage implements OnInit {
 
+  stringAPI: "https://music-streaming-thing.herokuapp.com/stream/";
   musicasEncontradas: any;
   search: any;
+  
 
   constructor(private http: HttpClient) { }
 
@@ -25,4 +27,5 @@ export class BuscarPage implements OnInit {
         console.log(this.musicasEncontradas)
       })
   }
+  
 }
