@@ -10,6 +10,7 @@ export class BuscarPage implements OnInit {
 
   stringAPI: "https://music-streaming-thing.herokuapp.com/stream/";
   musicasEncontradas: any;
+  musicaTocando: any;
   search: any;
   
 
@@ -18,14 +19,18 @@ export class BuscarPage implements OnInit {
   ngOnInit() {
 
     this.musicasEncontradas = []
+    this.musicaTocando = {}
   }
 
   buscar() {
     this.http.get(`https://cors-anywhere.herokuapp.com/https://music-streaming-thing.herokuapp.com/audio?query=${encodeURI(this.search)}`)
       .subscribe( data => {
-        this.musicasEncontradas = data[0]
-        console.log(this.musicasEncontradas)
+        this.musicasEncontradas = data
       })
   }
   
+  tocar(musica) {
+    this.musicaTocando = musica
+    console.log(this.musicaTocando)
+  }
 }
