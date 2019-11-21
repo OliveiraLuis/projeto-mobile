@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-buscar',
@@ -14,12 +16,12 @@ export class BuscarPage implements OnInit {
   search: any;
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private navCtrl: NavController) { }
 
   ngOnInit() {
 
     this.musicasEncontradas = []
-    this.musicaTocando = {}
   }
 
   buscar() {
@@ -30,7 +32,11 @@ export class BuscarPage implements OnInit {
   }
   
   tocar(musica) {
-    this.musicaTocando = musica
-    console.log(this.musicaTocando)
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        musica: JSON.stringify(musica),
+      }
+    };
+    this.navCtrl.navigateForward(['player'], navigationExtras);
   }
 }
