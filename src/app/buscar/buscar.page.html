@@ -17,7 +17,7 @@
     </ion-fab>
   <ion-list>
     <ion-item-sliding>
-      <ion-item (click)="tocar(musica[0])" button *ngFor="let musica of musicasEncontradas">
+      <ion-item (click)="tocar(i)" button *ngFor="let musica of musicasEncontradas; let i = index">
         <ion-avatar slot="start">
           <img src="{{musica[0].artwork_url}}">
         </ion-avatar>
