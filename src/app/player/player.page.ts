@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerService } from './player.service';
-import { NavController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-player',
@@ -15,10 +15,11 @@ export class PlayerPage implements OnInit {
   songTime: string;
   percentageOfSlider: number;
   link: String;
+  iconFavorite: String
 
   constructor(
     private playerService: PlayerService,
-    private navCtrl: NavController
+    public toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -27,11 +28,7 @@ export class PlayerPage implements OnInit {
     this.percentageOfSlider = 0
     this.activeSong = document.getElementById("song")
     this.link = "https://music-streaming-thing.herokuapp.com/stream/"
-
-   /* if (this.playerService.qtdMusicas == -1) {
-      this.navCtrl.navigateForward(['buscar'])
-    }*/
-
+    this.iconFavorite = "heart-empty"
     this.setSong()
   }
 
@@ -82,5 +79,14 @@ export class PlayerPage implements OnInit {
   prev() {
     this.playerService.posTocando--
     this.setSong()
+  }
+
+  async favorite() {
+    this.iconFavorite = "heart"
+    const toast = await this.toastController.create({
+        message: 'Música adicionada aos favoritos.',
+        duration: 2000
+    });
+    toast.present();
   }
 }

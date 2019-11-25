@@ -11,7 +11,7 @@
 <ion-content>
   <ion-list>
     <ion-item-sliding>
-      <ion-item button *ngFor="let playlist of playlist">
+      <ion-item (click)="tocarFavoritas()" button *ngFor="let playlist of playlist">
         <ion-avatar slot="start">
           <img src="{{playlist.thumbnail}}">
         </ion-avatar>
