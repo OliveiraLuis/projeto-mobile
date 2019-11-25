@@ -33,6 +33,7 @@ export class PlayerPage implements OnInit {
   }
 
   setSong() {
+    this.iconFavorite = "heart-empty"
     this.musica = this.playerService.musicas[this.playerService.posTocando][0]
     this.activeSong.src = `${this.link}${this.musica.data}`
   }
@@ -83,6 +84,8 @@ export class PlayerPage implements OnInit {
 
   async favorite() {
     this.iconFavorite = "heart"
+
+    this.playerService.favoritas = this.playerService.musicas[this.playerService.posTocando]
     const toast = await this.toastController.create({
         message: 'Música adicionada aos favoritos.',
         duration: 2000
