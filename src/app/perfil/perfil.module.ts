@@ -6,10 +6,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PerfilPage } from './perfil.page';
+import { Camera, CameraOriginal } from '@ionic-native/camera'
+
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'perfil',
     component: PerfilPage
   }
 ];
@@ -21,6 +23,10 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PerfilPage]
-})
+  declarations: [PerfilPage],
+  providers: [
+//    Camera
+  ]})
+
+
 export class PerfilPageModule {}
