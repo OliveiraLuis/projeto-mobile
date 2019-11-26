@@ -1,19 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start" color="primary">
-      <ion-menu-button></ion-menu-button>
-      <img src="assets/icon/favicon.ico" width="32px" style="float: left">
-    </ion-buttons>
-    <ion-title>SpotiiFree - Perfil</ion-title>
+    <ion-title>perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-
-    <p>Vamos bater uma foto:</p>
-    <ion-button (click)="baterFoto()">bater uma foto</ion-button>
+    <ion-button (click)="baterFoto()">Foto</ion-button>
     <img *ngIf="imagem" [src]="imagem">
-
-  </div>
 </ion-content>

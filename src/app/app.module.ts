@@ -13,7 +13,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { Camera } from '@ionic-native/camera/ngx';
 import * as firebase from 'firebase';
 
 firebase.initializeApp(environment.firebase);
@@ -26,6 +26,7 @@ firebase.initializeApp(environment.firebase);
     StatusBar,
     SplashScreen,
     AuthenticationService,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
