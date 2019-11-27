@@ -14,7 +14,6 @@ import { AuthenticationService } from './services/authentication.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
 
-import { Camera } from '@ionic-native/camera/ngx';
 import * as firebase from 'firebase';
 
 firebase.initializeApp(environment.firebase);

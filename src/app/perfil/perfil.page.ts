@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { AuthenticationService } from '../services/authentication.service'
+
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  imagem: any=null;
+  imagem: any = null;
+  username: any;
+  useremail:any;
 
   private options: CameraOptions = {
     quality: 50,
@@ -15,10 +19,18 @@ export class PerfilPage implements OnInit {
     mediaType: this.camera.MediaType.PICTURE
   }
 
-  constructor(private camera:Camera) { }
-  ngOnInit() {
+  constructor(
+    private camera: Camera,
+    private AuthService: AuthenticationService
+  ) {}
+
+  async ngOnInit() {
+    this.AuthService.detalhesUsuario().then(usuario => {
+      console.log(usuario)
+    })
   }
-  baterFoto(){
+
+  baterFoto() {
     this.camera.getPicture(this.options).then((imageData) => {
       this.imagem = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {

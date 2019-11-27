@@ -8,24 +8,18 @@
   <div class="card">
     <div class="header">
       <div class="avatar">
-        <img src="../../assets/player104.png" alt="">
+        <img *ngIf="imagem" [src]="imagem">
       </div>
     </div>
   </div>
 
   <div class="card-body">
     <div class="user-meta ion-text-center">
-      <h3 class="playername">Roger Federer</h3>
-      <h5 class="country">Switzerland</h5>
-      <h6 class="ranking">Current ranking: <ion-chip>
+      <h3 class="playername">{{username}}</h3>
         <ion-label>2</ion-label>
-        </ion-chip>
-      </h6>
     </div>
-    <ion-button expand="full" color="primary">http://rogerfederer.com</ion-button>
-    <ion-button expand="full" color="secondary">@RogerFederer on Twitter</ion-button>
-    <ion-button expand="full" color="secondary">View profile at ATP</ion-button>
+    <ion-button expand="full" color="primary">{{useremail}}</ion-button>
   </div>
     <ion-button (click)="baterFoto()">Foto</ion-button>
-    <img *ngIf="imagem" [src]="imagem">
+    
 </ion-content>
