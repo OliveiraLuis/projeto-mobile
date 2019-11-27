@@ -23,9 +23,11 @@ export class PerfilPage implements OnInit {
     private camera: Camera,
     private AuthService: AuthenticationService
   ) {}
-
-  async ngOnInit() {
+  
+  ngOnInit() {
     this.AuthService.detalhesUsuario().then(usuario => {
+      this.useremail = usuario.email
+      this.username = usuario.email
       console.log(usuario)
     })
   }

@@ -16,7 +16,7 @@ export class RegisterPage implements OnInit {
   validations_form: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
-
+  
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email é um campo obrigatório' },
@@ -31,7 +31,7 @@ export class RegisterPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private authServise: AuthenticationService,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
     //private camera: Camera,
     //private sn: DomSanitizer
   ) { }
@@ -56,6 +56,7 @@ export class RegisterPage implements OnInit {
       ])),
     });
   }
+
 
   tryRegister(value) {
     this.authServise.registroUsuario(value)
