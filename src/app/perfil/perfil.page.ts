@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { NavController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service'
 import { Storage } from '@ionic/storage'
 @Component({
@@ -18,11 +19,13 @@ export class PerfilPage implements OnInit {
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE
   }
+  isLogged: boolean;
 
   constructor(
     private camera: Camera,
     private AuthService: AuthenticationService,
-    private storage: Storage
+    private storage: Storage,
+    private navCtrl: NavController
   ) {}
   
   ngOnInit() {
@@ -47,6 +50,12 @@ export class PerfilPage implements OnInit {
     this.storage.get('photos').then((photo)=>{
       this.imagem = photo;
     })
+  }
+
+  gotoLogoff() {
+    this.AuthService.logoutUsuario()
+    this.navCtrl.navigateForward('/home')
+    this.isLogged = false
   }
 
 }
