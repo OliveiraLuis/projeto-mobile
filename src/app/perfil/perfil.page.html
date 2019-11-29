@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <img src="assets/icon/favicon.ico" width="32px" style="float: left">
-    <ion-title>SpotiiFree - Tocar Música</ion-title>
+    <ion-title>SpotiiFree - Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,17 +14,20 @@
       <div class="avatar">
         <img *ngIf="imagem" [src]="imagem">
       </div>
-      <ion-button slot="secondary" (click)="baterFoto()">
-        <ion-icon name="camera"></ion-icon>
-      </ion-button>
     </div>
   </div>
-
+  
+  <div class="card">
+    <ion-button size="large" style="position: absolute; left: 40%;" color="rosa" (click)="baterFoto()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-button>
+  </div>
+  
   <div class="card-body">
     <div class="user-meta ion-text-center">
       <h3 class="playername">{{username}}</h3>
     </div>
-    <ion-button expand="full" color="primary">{{useremail}}</ion-button>
+    <a href="mailto:{{useremail}}"><ion-button expand="full" color="primary">{{useremail}}</ion-button></a>
   </div>
     
 </ion-content>

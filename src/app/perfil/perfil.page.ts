@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AuthenticationService } from '../services/authentication.service'
-
+import { Storage } from '@ionic/storage'
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
@@ -21,24 +21,32 @@ export class PerfilPage implements OnInit {
 
   constructor(
     private camera: Camera,
-    private AuthService: AuthenticationService
+    private AuthService: AuthenticationService,
+    private storage: Storage
   ) {}
   
   ngOnInit() {
     this.AuthService.detalhesUsuario().then(usuario => {
       this.useremail = usuario.email
       this.username = usuario.email
-      console.log(usuario)
     })
+    this.pegarFoto()
   }
 
   baterFoto() {
     this.camera.getPicture(this.options).then((imageData) => {
       this.imagem = 'data:image/jpeg;base64,' + imageData;
+      this.storage.set('photos', this.imagem);
     }, (err) => {
       alert('Ops!\nHouve um erro');
       console.log(err)
     });
+  }
+
+  pegarFoto(){
+    this.storage.get('photos').then((photo)=>{
+      this.imagem = photo;
+    })
   }
 
 }
