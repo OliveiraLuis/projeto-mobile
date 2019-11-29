@@ -16,6 +16,7 @@ export class PlayerPage implements OnInit {
   percentageOfSlider: number;
   link: String;
   iconFavorite: String
+  duration: number;
 
   constructor(
     private playerService: PlayerService,
@@ -62,6 +63,10 @@ export class PlayerPage implements OnInit {
   }
 
   updateTime() {
+    this.duration = this.activeSong.duration
+    if (this.duration == Infinity)
+        this.duration = 3 * 60
+
     if (this.activeSong.currentTime == this.activeSong.duration) {
       this.stopSong()
       this.next()
@@ -69,7 +74,7 @@ export class PlayerPage implements OnInit {
     }
     var currentSeconds = (Math.floor(this.activeSong.currentTime % 60) < 10 ? '0' : '') + Math.floor(this.activeSong.currentTime % 60)
     var currentMinutes = Math.floor(this.activeSong.currentTime / 60)
-    this.songTime = currentMinutes + ":" + currentSeconds + ' / ' + Math.floor(this.activeSong.duration / 60) + ":" + (Math.floor(this.activeSong.duration % 60) < 10 ? '0' : '') + Math.floor(this.activeSong.duration % 60);
+    this.songTime = currentMinutes + ":" + currentSeconds + ' / ' + Math.floor(this.duration / 60) + ":" + (Math.floor(this.duration % 60) < 10 ? '0' : '') + Math.floor(this.duration % 60);
   }
 
   next() {
